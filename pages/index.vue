@@ -1,5 +1,7 @@
 <template>
-    <layout-header />
+<section>
+    <p></p>
+</section>
 </template>
 
 <script>
