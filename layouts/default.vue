@@ -1,13 +1,13 @@
 <template>
 <div id="echo-document">
 
-    <layout-header />
+    <the-header />
 
     <main class="echo-p-main" role="main">
         <Nuxt />
     </main><!-- /.echo-p-main -->
 
-    <layout-footer />
+    <the-footer />
 
 </div><!-- /.echo-document -->
 </template>
