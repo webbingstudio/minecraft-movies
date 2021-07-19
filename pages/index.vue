@@ -1,7 +1,5 @@
 <template>
-<section>
-    <p></p>
-</section>
+    <movie-list />
 </template>
 
 <script>
