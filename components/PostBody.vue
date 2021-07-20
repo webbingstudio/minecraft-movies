@@ -11,10 +11,10 @@
             <nav class="echo-labels">
                 <dl class="echo-labels-list">
                     <dt class="echo-labels-header">Tags</dt>
-                    <dd class="echo-labels-item"><a href="#" class="echo-p-post-tag-label echo-label echo-label-style-a">たぐ</a></dd>
-                    <dd class="echo-labels-item"><a href="#" class="echo-p-post-tag-label echo-label echo-label-style-a">たぐ</a></dd>
-                    <dd class="echo-labels-item"><a href="#" class="echo-p-post-tag-label echo-label echo-label-style-a">たぐ</a></dd>
-                    <dd class="echo-labels-item"><a href="#" class="echo-p-post-tag-label echo-label echo-label-style-a">たぐ</a></dd>
+                    <dd class="echo-labels-item"><a href="#" class="echo-p-post-tag-label echo-label echo-label-style-a">#たぐ</a></dd>
+                    <dd class="echo-labels-item"><a href="#" class="echo-p-post-tag-label echo-label echo-label-style-a">#たぐ</a></dd>
+                    <dd class="echo-labels-item"><a href="#" class="echo-p-post-tag-label echo-label echo-label-style-a">#たぐ</a></dd>
+                    <dd class="echo-labels-item"><a href="#" class="echo-p-post-tag-label echo-label echo-label-style-a">#たぐ</a></dd>
                 </dl><!-- /.echo-labels-list -->
             </nav><!-- /.echo-labels -->
         </div><!-- /.echo-p-post-category -->
@@ -59,4 +59,8 @@ export default {
 </script>
 
 <style scoped>
+.echo-p-post-tag .echo-labels-header {
+    font-family: 'Press Start 2P', sans-serif;
+    text-transform: uppercase;
+}
 </style>
