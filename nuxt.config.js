@@ -4,7 +4,9 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'minecraft-movies',
+    titleTemplate(title) {
+      return (title ? `${title} | ` : '') + process.env.npm_package_name
+    },
     htmlAttrs: {
       lang: 'ja'
     },
@@ -29,6 +31,7 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    '~/plugins/filter.js'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
