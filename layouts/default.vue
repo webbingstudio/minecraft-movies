@@ -3,7 +3,7 @@
 
     <the-header />
 
-    <main class="echo-p-main" role="main">
+    <main class="echo-p-main echo-padding-y-0" role="main">
         <Nuxt />
     </main><!-- /.echo-p-main -->
 
