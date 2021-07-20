@@ -7,8 +7,8 @@
                     v-for="(post, index) in posts"
                     :id="post.id"
                     :key="index"
-                    :eyecatch="post.eyecatch"
-                    :eyecatch-url="post.eyecatch.url"
+                    :eyecatch="post.eyecatchSm"
+                    :eyecatch-url="post.eyecatchSm.url"
                     :title="post.title"
                     :date="post.createdAt"
                 />
@@ -29,7 +29,7 @@ export default {
     "publishedAt": "2021-07-14T09:19:53.231Z",
     "revisedAt": "2021-07-14T09:19:53.231Z",
     "title": "吾輩は人間と同居して彼等を観察すればするほど",
-    "eyecatch": {
+    "eyecatchSm": {
         "url": "https://picsum.photos/800/600",
         "height": 600,
         "width": 800
@@ -44,7 +44,7 @@ export default {
     "publishedAt": "2021-07-13T10:02:17.998Z",
     "revisedAt": "2021-07-13T10:02:17.998Z",
     "title": "彼等は我儘なものだと断言せざるを得ないようになった。ことに吾輩が時々同衾する小供のごときに至っては",
-    "eyecatch": {
+    "eyecatchSm": {
         "url": "https://picsum.photos/800/600",
         "height": 600,
         "width": 800
@@ -59,7 +59,7 @@ export default {
     "publishedAt": "2021-07-13T10:01:37.010Z",
     "revisedAt": "2021-07-13T10:01:37.010Z",
     "title": "言語同断である。自分の勝手な時は人を逆さにしたり",
-    "eyecatch": {
+    "eyecatchSm": {
         "url": "https://picsum.photos/800/600",
         "height": 600,
         "width": 800
@@ -74,7 +74,7 @@ export default {
     "publishedAt": "2021-07-13T09:59:13.937Z",
     "revisedAt": "2021-07-13T09:59:13.937Z",
     "title": "頭へ袋をかぶせたり、抛り出したり、へっついの中へ押し込んだりする",
-    "eyecatch": {
+    "eyecatchSm": {
         "url": "https://picsum.photos/800/600",
         "height": 600,
         "width": 800
@@ -89,7 +89,7 @@ export default {
     "publishedAt": "2021-07-13T09:58:00.341Z",
     "revisedAt": "2021-07-13T09:58:00.341Z",
     "title": "しかも吾輩の方で少しでも手出しをしようものなら家内総がかりで追い廻して迫害を加える",
-    "eyecatch": {
+    "eyecatchSm": {
         "url": "https://picsum.photos/800/600",
         "height": 600,
         "width": 800
