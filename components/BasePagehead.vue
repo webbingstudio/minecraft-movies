@@ -8,8 +8,7 @@
                     :srcset="eyecatchSmUrl + ' 640w'"
                     sizes="100vw">
                 <source
-                    media="(max-width:960px)"
-                    srcset="eyecatchLgUrl + ' 960w'"
+                    srcset="eyecatchLgUrl + ' 100vw'"
                     sizes="100vw">
                 <img
                     :src="eyecatchLgUrl"
@@ -93,8 +92,15 @@ export default {
     font-family: 'Press Start 2P', sans-serif;
     text-shadow: .1em .1em 0 #000;
 }
-.echo-hero-fit .echo-hero-image {
+.echo-p-pagehead .echo-hero-fit .echo-hero-image {
+    padding-bottom: 75%;
+}
+@media (min-width: 62.5rem) {
+.echo-p-pagehead .echo-hero-fit .echo-hero-image {
     padding-bottom: 25%;
+}
+}
+.echo-p-pagehead .echo-hero-fit .echo-hero-image {
     opacity: .5;
 }
 </style>
