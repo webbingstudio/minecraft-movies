@@ -21,14 +21,16 @@
                     />
                 </figure><!-- /.echo-thumbnail -->
             </div><!-- /.echo-card-object -->
-            <div class="echo-card-contents">
+            <div class="echo-card-contents echo-padding-bottom-0">
+                <p class="echo-card-time">
+                    <span class="echo-label echo-label-style-a echo-text-md">{{ time }}</span>
+                </p>
                 <h2 :class="titleClass" class="echo-card-title echo-title">{{ title }}</h2>
-                <p class="echo-card-time"><span class="echo-label echo-label-style-a echo-text-md">{{ time }}</span></p>
             </div><!-- /.echo-card-contents -->
             <div class="echo-card-footer echo-padding-top-0">
                 <div class="echo-card-meta">
                     <ul class="echo-list echo-list-horizontal echo-text-md">
-                        <li class="echo-list-item"><time class="echo-card-date" datetime="date">{{ date | formatDate }}</time></li>
+                        <li class="echo-list-item"><time class="echo-card-date" :datetime="date">{{ date | formatDate }}</time></li>
                     </ul>
                 </div><!-- /.echo-card-meta -->
             </div><!-- /.echo-card-footer -->
@@ -50,7 +52,7 @@ export default {
     },
     titleClass: {
         type: String,
-        default: 'echo-title-level-6 echo-title-style-a',
+        default: 'echo-title-level-5 echo-title-style-a',
     },
     id: {
         type: String,
@@ -75,12 +77,9 @@ export default {
         required: true,
         default: '',
     },
-    eyecatchSm: {
-        type: Object
-    },
     eyecatchSmUrl: {
         type: String,
-        default: ''
+        default: null
     }
   },
 }
