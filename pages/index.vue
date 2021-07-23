@@ -32,8 +32,23 @@
         </div><!-- /.echo-p-pagehead -->
 
 
+        <section class="echo-p-tags echo-container echo-padding-top-xl echo-padding-bottom-lg">
+            <h2 class="echo-p-posts-title echo-title echo-title-style-b echo-title-level-4 echo-margin-bottom-lg">Tags</h2>
+            <nav class="echo-labels echo-text-xxl">
+                <ul class="echo-labels-list">
+                    <tag-list
+                        v-for="(tag, index) in usedTags"
+                        :id="tag.id"
+                        :key="index"
+                        :label="tag.label"
+                    />
+                </ul><!-- /.echo-labels-list -->
+            </nav><!-- /.echo-labels -->
+        </section><!-- /.echo-p-tags -->
 
-        <section class="echo-p-posts echo-container echo-margin-y-lg">
+
+        <section class="echo-p-posts echo-container echo-padding-y-lg">
+            <h2 class="echo-p-posts-title echo-title echo-title-style-b echo-title-level-4 echo-margin-bottom-lg">What's New</h2>
             <div class="echo-cards">
                 <posts-list-card
                     v-for="(movie, index) in movies"
@@ -56,14 +71,35 @@ import axios from 'axios'
 export default {
     async asyncData({ $config }) {
         const moviesData = await axios.get(
-            `${$config.apiUrl}/movies?limit=9&orders=-publishedAt`, {
+            `${$config.apiUrl}/movies?orders=-publishedAt`, {
+                headers: { 'X-API-KEY': $config.apiKey }
+        })
+        const tagsData = await axios.get(
+            `${$config.apiUrl}/tags`, {
                 headers: { 'X-API-KEY': $config.apiKey }
         })
         return {
-            movies: moviesData.data.contents
+            movies: moviesData.data.contents,
+            tags: tagsData.data.contents
         }
-    }
+    },
+    computed: {
+        usedTags() {
+            const usetags = []
+            const usedtags = []
+            for ( let i = 0; i < this.movies.length; ++i ) {
+                usetags.push( this.movies[i].tag.map( tag => tag.id ) )
+            }
+            for ( let i = 0; i < this.tags.length; ++i ) {
+                if( usetags.some( tags => tags.find( tag => tag === this.tags[i].id ) ) ) {
+                    usedtags.push( this.tags[i] )
+                }
+            }
+            return usedtags
+        },
+    },
 }
+
 </script>
 
 <style scoped>
@@ -102,5 +138,13 @@ export default {
 }
 .echo-p-pagehead.echo-p-pagehead-home .echo-hero-fit .echo-hero-image {
     opacity: .5;
+}
+.echo-p-tags-title,
+.echo-p-posts-title {
+    font-family: 'Press Start 2P', sans-serif;
+    text-transform: uppercase;
+}
+.echo-p-tags .echo-labels-list {
+    justify-content: center;
 }
 </style>
