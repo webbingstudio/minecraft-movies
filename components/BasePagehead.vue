@@ -2,21 +2,38 @@
 <div :class="wrapClass" class="echo-p-pagehead">
     <div class="echo-hero echo-hero-fit echo-hero-inverse">
         <div class="echo-hero-image">
-            <picture v-if="eyecatchLg && eyecatchSm">
+            <picture>
                 <source
+                    v-if="eyecatchSmUrl"
                     media="(max-width:640px)"
                     :srcset="eyecatchSmUrl + ' 640w'"
                     sizes="100vw">
                 <source
-                    srcset="eyecatchLgUrl + ' 100vw'"
+                    v-else
+                    media="(max-width:640px)"
+                    :srcset="'https://img.youtube.com/vi/' + youtubeId + '/mqdefault.jpg 640w'"
+                    sizes="100vw">
+                <source
+                    v-if="eyecatchLgUrl"
+                    :srcset="eyecatchLgUrl + ' 100vw'"
+                    sizes="100vw">
+                <source
+                    v-else
+                    :srcset="'https://img.youtube.com/vi/' + youtubeId + '/maxresdefault.jpg 100vw'"
                     sizes="100vw">
                 <img
+                    v-if="eyecatchLgUrl"
                     :src="eyecatchLgUrl"
+                    :alt="'「' + title + '」のサムネイル'"
+                >
+                <img
+                    v-else
+                    :src="'https://img.youtube.com/vi/' + youtubeId + '/maxresdefault.jpg'"
                     :alt="'「' + title + '」のサムネイル'"
                 >
             </picture>
             <img
-                v-if="eyecatchLg && !eyecatchSm"
+                v-if="eyecatchLgUrl && !eyecatchSmUrl"
                 :src="eyecatchLgUrl"
                 :alt="'「' + title + '」のサムネイル'"
             />
@@ -24,10 +41,11 @@
         <div class="echo-hero-contents">
             <div class="echo-hero-contents-inner">
                 <div class="echo-hero-header">
-                    <h1 :class="titleClass" class="echo-p-pagehead-title echo-hero-title echo-title">本文には画像がありませんがアイキャッチ画像を指定しているエントリーです</h1>
+                    <h1 :class="titleClass" class="echo-p-pagehead-title echo-hero-title echo-title">{{ title }}</h1>
                 </div><!-- /.echo-hero-header -->
                 <div class="echo-hero-body">
-                    <time class="echo-p-pagehead-meta" datetime="2021-01-20T09:24:00+09:00">2021.01.20</time>
+                    <p v-if="body">{{ body }}</p>
+                    <time v-if="date" class="echo-p-pagehead-meta" :datetime="date">{{ date | formatDate }}</time>
                 </div><!-- /.echo-hero-body -->
             </div><!-- /.echo-hero-contents-inner -->
         </div><!-- /.echo-hero-contents -->
@@ -46,7 +64,7 @@ export default {
       type: String,
       default: 'echo-title-level-4',
     },
-    id: {
+    youtubeId: {
       type: String,
       required: true,
     },
@@ -55,20 +73,13 @@ export default {
       required: true,
       default: '',
     },
-    date: {
+    body: {
       type: String,
-      required: true,
       default: '',
     },
-    eyecatchLg: {
+    date: {
       type: String,
-      required: true,
-      default: null
-    },
-    eyecatchSm: {
-      type: String,
-      required: true,
-      default: null
+      default: '',
     },
     eyecatchLgUrl: {
       type: String,
@@ -93,14 +104,29 @@ export default {
     text-shadow: .1em .1em 0 #000;
 }
 .echo-p-pagehead .echo-hero-fit .echo-hero-image {
-    padding-bottom: 75%;
+    height: 15rem;
+    padding-bottom: 0;
 }
-@media (min-width: 62.5rem) {
+@media (min-width: 26.75rem) {
+.echo-p-pagehead .echo-hero-fit .echo-hero-image {
+    padding-bottom: 50%;
+}
+}
+@media (min-width: 48rem) {
 .echo-p-pagehead .echo-hero-fit .echo-hero-image {
     padding-bottom: 25%;
 }
 }
 .echo-p-pagehead .echo-hero-fit .echo-hero-image {
-    opacity: .5;
+    opacity: .25;
+}
+.echo-p-pagehead .echo-hero-fit .echo-hero-image img {
+    width: 120%;
+    height: 200%;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%)  rotate(-10deg);
+    transform-origin: center;
+    object-position: top center;
 }
 </style>
