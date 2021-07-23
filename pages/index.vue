@@ -36,15 +36,15 @@
         <section class="echo-p-posts echo-container echo-margin-y-lg">
             <div class="echo-cards">
                 <posts-list-card
-                    v-for="(post, index) in posts"
-                    :id="post.id"
+                    v-for="(movie, index) in movies"
+                    :id="movie.id"
                     :key="index"
-                    :eyecatch-sm="post.eyecatchSm"
-                    :eyecatch-sm-url="post.eyecatchSm.url"
-                    :youtube-id="post.youtubeId"
-                    :title="post.title"
-                    :date="post.createdAt"
-                    :time="post.time"
+                    :eyecatch-sm="movie.eyecatchSm ? movie.eyecatchSm : null"
+                    :eyecatch-sm-url="movie.eyecatchSm ? movie.eyecatchSm.url : null"
+                    :youtube-id="movie.youtubeId"
+                    :title="movie.title"
+                    :date="movie.createdAt"
+                    :time="movie.time"
                 />
             </div><!-- /.echo-cards -->
         </section><!-- /.echo-p-posts -->
@@ -52,81 +52,15 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
-    data() {
+    async asyncData({ $config }) {
+        const moviesData = await axios.get(
+            `${$config.apiUrl}/movies?limit=9&orders=-publishedAt`, {
+                headers: { 'X-API-KEY': $config.apiKey }
+        })
         return {
-            posts: [
-{
-    "id": "qnfoxodef",
-    "createdAt": "2021-07-14T09:19:53.231Z",
-    "updatedAt": "2021-07-14T09:19:53.231Z",
-    "publishedAt": "2021-07-14T09:19:53.231Z",
-    "revisedAt": "2021-07-14T09:19:53.231Z",
-    "youtubeId": "CcuXdLpaQQ8",
-    "eyecatchSm": {},
-    "title": "吾輩は人間と同居して彼等を観察すればするほど",
-    "body": "<p>吾輩の尊敬する筋向の白君などは逢う度毎に人間ほど不人情なものはないと言っておらるる。<br>白君は先日玉のような子猫を四疋産まれたのである。ところがそこの家の書生が三日目にそいつを裏の池へ持って行って四疋ながら棄てて来たそうだ。<br><br>白君は涙を流してその一部始終を話した上、どうしても我等猫族が親子の愛を完くして美しい家族的生活をするには人間と戦ってこれを剿滅せねばならぬといわれた。一々もっともの議論と思う。</p>",
-    "time": '15:45',
-    "tags": ''
-},
-{
-    "id": "x6djeyto7u59",
-    "createdAt": "2021-07-13T10:02:17.998Z",
-    "updatedAt": "2021-07-13T10:02:17.998Z",
-    "publishedAt": "2021-07-13T10:02:17.998Z",
-    "revisedAt": "2021-07-13T10:02:17.998Z",
-    "youtubeId": "8nxaZ69ElEc",
-    "eyecatchSm": {},
-    "title": "彼等は我儘なものだと断言せざるを得ないようになった。ことに吾輩が時々同衾する小供のごときに至っては",
-    "body": "<p>吾輩の尊敬する筋向の白君などは逢う度毎に人間ほど不人情なものはないと言っておらるる。<br>白君は先日玉のような子猫を四疋産まれたのである。ところがそこの家の書生が三日目にそいつを裏の池へ持って行って四疋ながら棄てて来たそうだ。<br><br>白君は涙を流してその一部始終を話した上、どうしても我等猫族が親子の愛を完くして美しい家族的生活をするには人間と戦ってこれを剿滅せねばならぬといわれた。一々もっともの議論と思う。</p>",
-    "time": '15:45',
-    "tags": ''
-},
-{
-    "id": "d6ywxhisz",
-    "createdAt": "2021-07-13T10:01:37.010Z",
-    "updatedAt": "2021-07-13T10:01:37.010Z",
-    "publishedAt": "2021-07-13T10:01:37.010Z",
-    "revisedAt": "2021-07-13T10:01:37.010Z",
-    "youtubeId": "Bgbmcz6A",
-    "title": "言語同断である。自分の勝手な時は人を逆さにしたり",
-    "eyecatchSm": {
-        "url": "https://picsum.photos/800/600",
-        "height": 600,
-        "width": 800
-    },
-    "body": "<p>吾輩の尊敬する筋向の白君などは逢う度毎に人間ほど不人情なものはないと言っておらるる。<br>白君は先日玉のような子猫を四疋産まれたのである。ところがそこの家の書生が三日目にそいつを裏の池へ持って行って四疋ながら棄てて来たそうだ。<br><br>白君は涙を流してその一部始終を話した上、どうしても我等猫族が親子の愛を完くして美しい家族的生活をするには人間と戦ってこれを剿滅せねばならぬといわれた。一々もっともの議論と思う。</p>",
-    "time": '15:45',
-    "tags": ''
-},
-{
-    "id": "t3ngb6n9a",
-    "createdAt": "2021-07-13T09:59:13.937Z",
-    "updatedAt": "2021-07-13T09:59:13.937Z",
-    "publishedAt": "2021-07-13T09:59:13.937Z",
-    "revisedAt": "2021-07-13T09:59:13.937Z",
-    "youtubeId": "6IbFTBdJloc",
-    "eyecatchSm": {},
-    "title": "頭へ袋をかぶせたり、抛り出したり、へっついの中へ押し込んだりする",
-    "body": "<p>吾輩の尊敬する筋向の白君などは逢う度毎に人間ほど不人情なものはないと言っておらるる。<br>白君は先日玉のような子猫を四疋産まれたのである。ところがそこの家の書生が三日目にそいつを裏の池へ持って行って四疋ながら棄てて来たそうだ。<br><br>白君は涙を流してその一部始終を話した上、どうしても我等猫族が親子の愛を完くして美しい家族的生活をするには人間と戦ってこれを剿滅せねばならぬといわれた。一々もっともの議論と思う。</p>",
-    "time": '15:45',
-    "tags": ''
-},
-{
-    "id": "k8cgb19xs0",
-    "createdAt": "2021-07-13T09:58:00.341Z",
-    "updatedAt": "2021-07-13T09:58:38.284Z",
-    "publishedAt": "2021-07-13T09:58:00.341Z",
-    "revisedAt": "2021-07-13T09:58:00.341Z",
-    "youtubeId": "nBqXSBxOH-A",
-    "eyecatchSm": {},
-    "title": "しかも吾輩の方で少しでも手出しをしようものなら家内総がかりで追い廻して迫害を加える",
-    "body": "<p>吾輩の尊敬する筋向の白君などは逢う度毎に人間ほど不人情なものはないと言っておらるる。<br>白君は先日玉のような子猫を四疋産まれたのである。ところがそこの家の書生が三日目にそいつを裏の池へ持って行って四疋ながら棄てて来たそうだ。<br><br>白君は涙を流してその一部始終を話した上、どうしても我等猫族が親子の愛を完くして美しい家族的生活をするには人間と戦ってこれを剿滅せねばならぬといわれた。一々もっともの議論と思う。</p>",
-    "time": '15:45',
-    "tags": ''
-}
-
-            ]
+            movies: moviesData.data.contents
         }
     }
 }
