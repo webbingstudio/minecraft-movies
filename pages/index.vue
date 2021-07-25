@@ -41,7 +41,7 @@
                             <p class="echo-p-pagehead-subtitle echo-hero-subtitle echo-title echo-title-lebel-5">マインクラフトムービーズ</p>
                         </div><!-- /.echo-hero-header -->
                         <div class="echo-p-pagehead-body echo-hero-body">
-                            <p><span class="echo-label">Minecraft動画アーカイブ</span></p>
+                            <p><span class="echo-label">MinecraftのYouTube動画倉庫</span></p>
                         </div><!-- /.echo-hero-body -->
                     </div><!-- /.echo-hero-contents-inner -->
                 </div><!-- /.echo-hero-contents -->
@@ -88,7 +88,7 @@ import axios from 'axios'
 export default {
     async asyncData({ $config, $shuffle }) {
         const moviesData = await axios.get(
-            `${$config.apiUrl}/movies?orders=-publishedAt`, {
+            `${$config.apiUrl}/movies?limit=50&orders=-publishedAt`, {
                 headers: { 'X-API-KEY': $config.apiKey }
         })
         const moviesShuffle = $shuffle( moviesData.data.contents )
@@ -97,7 +97,7 @@ export default {
                 headers: { 'X-API-KEY': $config.apiKey }
         })
         return {
-            movies: moviesData.data.contents,
+            movies: moviesData.data.contents.slice( 0, 24 ),
             movie: moviesShuffle[ Math.floor( Math.random() * moviesData.data.contents.length ) ],
             tags: tagsData.data.contents
         }
@@ -107,6 +107,11 @@ export default {
             return this.$getUsedTags( this.movies, this.tags )
         },
     },
+    head() {
+        return {
+            title: 'MinecraftのYouTube動画倉庫 - マインクラフトムービーズ'
+        }
+    }
 }
 
 </script>
@@ -156,11 +161,6 @@ export default {
     transform: translateX(-50%) translateY(-50%) rotate(-5deg);
     transform-origin: center;
     object-position: top center;
-}
-.echo-p-tags-title,
-.echo-p-posts-title {
-    font-family: 'Press Start 2P', sans-serif;
-    text-transform: uppercase;
 }
 .echo-p-tags .echo-labels-list {
     justify-content: center;
