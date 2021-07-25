@@ -97,7 +97,7 @@ export default {
                 headers: { 'X-API-KEY': $config.apiKey }
         })
         return {
-            movies: moviesShuffle,
+            movies: moviesData.data.contents,
             movie: moviesShuffle[ Math.floor( Math.random() * moviesData.data.contents.length ) ],
             tags: tagsData.data.contents
         }
