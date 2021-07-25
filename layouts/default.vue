@@ -5,12 +5,19 @@
 
     <Nuxt />
 
+    <the-siteinfo />
+
     <the-footer />
 
 </div><!-- /.echo-document -->
 </template>
 
-<script>
-export default {
+<style>
+body {
+    background-color: #f2f2f2;
 }
-</script>
+.echo-title-style-b.echo-title-level-4 {
+    font-family: 'Press Start 2P', sans-serif;
+    text-transform: uppercase;
+}
+</style>
