@@ -5,15 +5,32 @@
                 <div class="echo-hero-image">
                     <picture>
                         <source
+                            v-if="movie.eyecatchSm !== undefined"
                             media="(max-width:640px)"
-                            srcset="https://picsum.photos/640/640 640w"
+                            :srcset="movie.eyecatchSm.url + ' 640w'"
                             sizes="100vw">
                         <source
-                            srcset="https://picsum.photos/1200/800"
+                            v-else
+                            media="(max-width:640px)"
+                            :srcset="'https://img.youtube.com/vi/' + movie.youtubeId + '/mqdefault.jpg 640w'"
+                            sizes="100vw">
+                        <source
+                            v-if="movie.eyecatchLg !== undefined"
+                            :srcset="movie.eyecatchLg.url + ' 100vw'"
+                            sizes="100vw">
+                        <source
+                            v-else
+                            :srcset="'https://img.youtube.com/vi/' + movie.youtubeId + '/maxresdefault.jpg 100vw'"
                             sizes="100vw">
                         <img
-                            src="https://picsum.photos/1200/800"
-                            alt=""
+                            v-if="movie.eyecatchLg !== undefined"
+                            :src="movie.eyecatchLg.url"
+                            :alt="'「' + movie.title + '」のサムネイル'"
+                        >
+                        <img
+                            v-else
+                            :src="'https://img.youtube.com/vi/' + movie.youtubeId + '/maxresdefault.jpg'"
+                            :alt="'「' + movie.title + '」のサムネイル'"
                         >
                     </picture>
                 </div><!-- /.echo-hero-image -->
@@ -69,33 +86,25 @@
 <script>
 import axios from 'axios'
 export default {
-    async asyncData({ $config }) {
+    async asyncData({ $config, $shuffle }) {
         const moviesData = await axios.get(
             `${$config.apiUrl}/movies?orders=-publishedAt`, {
                 headers: { 'X-API-KEY': $config.apiKey }
         })
+        const moviesShuffle = $shuffle( moviesData.data.contents )
         const tagsData = await axios.get(
             `${$config.apiUrl}/tags`, {
                 headers: { 'X-API-KEY': $config.apiKey }
         })
         return {
-            movies: moviesData.data.contents,
+            movies: moviesShuffle,
+            movie: moviesShuffle[ Math.floor( Math.random() * moviesData.data.contents.length ) ],
             tags: tagsData.data.contents
         }
     },
     computed: {
         usedTags() {
-            const usetags = []
-            const usedtags = []
-            for ( let i = 0; i < this.movies.length; ++i ) {
-                usetags.push( this.movies[i].tag.map( tag => tag.id ) )
-            }
-            for ( let i = 0; i < this.tags.length; ++i ) {
-                if( usetags.some( tags => tags.find( tag => tag === this.tags[i].id ) ) ) {
-                    usedtags.push( this.tags[i] )
-                }
-            }
-            return usedtags
+            return this.$getUsedTags( this.movies, this.tags )
         },
     },
 }
@@ -103,7 +112,7 @@ export default {
 </script>
 
 <style scoped>
-.echo-p-pagehead.echo-p-pagehead-home .echo-p-pagehead-title {
+.echo-p-pagehead-home .echo-p-pagehead-title {
     color: #999;
     font-family: 'Press Start 2P', sans-serif;
     text-shadow:
@@ -114,7 +123,7 @@ export default {
         .15em .15em 0 #000;
     text-transform: uppercase;
 }
-.echo-p-pagehead.echo-p-pagehead-home .echo-p-pagehead-subtitle {
+.echo-p-pagehead-home .echo-p-pagehead-subtitle {
     font-weight: bold;
     text-shadow:
         -.05em .05em 0 #000,
@@ -122,7 +131,7 @@ export default {
         -.05em -.05em 0 #000,
         .15em .15em 0 #000;
 }
-.echo-p-pagehead.echo-p-pagehead-home .echo-p-pagehead-body .echo-label {
+.echo-p-pagehead-home .echo-p-pagehead-body .echo-label {
     font-weight: bold;
     font-size: 1em;
     border-color: #000;
@@ -132,12 +141,21 @@ export default {
     padding-top: .05em;
 }
 @media (min-width: 62.5rem) {
-.echo-p-pagehead.echo-p-pagehead-home .echo-hero-fit .echo-hero-image {
+.echo-p-pagehead-home .echo-hero-fit .echo-hero-image {
     padding-bottom: 25%;
 }
 }
-.echo-p-pagehead.echo-p-pagehead-home .echo-hero-fit .echo-hero-image {
-    opacity: .5;
+.echo-p-pagehead-home .echo-hero-fit .echo-hero-image {
+    opacity: .25;
+}
+.echo-p-pagehead-home .echo-hero-fit .echo-hero-image img {
+    width: 120%;
+    height: 200%;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%) rotate(-5deg);
+    transform-origin: center;
+    object-position: top center;
 }
 .echo-p-tags-title,
 .echo-p-posts-title {
