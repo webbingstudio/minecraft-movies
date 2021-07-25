@@ -46,14 +46,14 @@ export default {
                 headers: { 'X-API-KEY': $config.apiKey }
         })
         const moviesData = await axios.get(
-            `${$config.apiUrl}/movies?orders=-publishedAt`, {
+            `${$config.apiUrl}/movies?limit=50&orders=-publishedAt`, {
                 headers: { 'X-API-KEY': $config.apiKey }
         })
         const moviesShuffle = $shuffle( moviesData.data.contents )
 
         return {
             post: data,
-            movies: moviesShuffle
+            movies: moviesShuffle.slice( 0, 8 )
         }
     },
     head() {
@@ -65,8 +65,4 @@ export default {
 </script>
 
 <style scoped>
-.echo-p-posts-title {
-    font-family: 'Press Start 2P', sans-serif;
-    text-transform: uppercase;
-}
 </style>

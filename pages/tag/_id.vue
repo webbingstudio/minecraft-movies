@@ -62,8 +62,4 @@ export default {
 </script>
 
 <style scoped>
-.echo-p-posts-title {
-    font-family: 'Press Start 2P', sans-serif;
-    text-transform: uppercase;
-}
 </style>
