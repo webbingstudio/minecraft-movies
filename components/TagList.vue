@@ -1,6 +1,6 @@
 <template>
 <dd :class="itemClass" class="echo-labels-item">
-    <a :href="`/tag/` + id + `/`" :class="labelClass" class="echo-p-post-tag-label echo-label">
+    <a :href="`/tag/` + id + `/`" :class="labelClass" class="echo-label">
         {{ label }}
     </a>
 </dd>
@@ -31,7 +31,7 @@ export default {
 </script>
 
 <style scoped>
-    .echo-p-post-tag-label:before {
+    .echo-label:before {
         content: '#';
     }
 </style>
