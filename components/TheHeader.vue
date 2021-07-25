@@ -5,16 +5,6 @@
 
             <p class="echo-p-header-title echo-title echo-title-level-5"><a href="/">{{ title }}</a></p>
 
-            <div class="echo-p-header-nav" role="navigation">
-                <nav class="echo-nav echo-nav-sm">
-                    <ul class="echo-nav-list">
-                        <li class="echo-nav-item">
-                            <a href="#" class="echo-nav-label">このサイトについて</a>
-                        </li>
-                    </ul><!-- /.echo-nav-list -->
-                </nav><!-- /.echo-nav -->
-            </div><!-- /.echo-p-header-nav -->
-
         </div><!-- /.echo-p-header-contents -->
     </div><!-- /.echo-container -->
 </header><!-- /.echo-p-header -->
