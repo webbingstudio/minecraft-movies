@@ -1,5 +1,5 @@
 <template>
-<div :class="itemClass" class="echo-cards-item">
+<div v-if="id !== exclude" :class="itemClass" class="echo-cards-item">
     <article :class="postClass" class="echo-card echo-card-sm echo-card-fixed">
         <a :href="'/post/' + id + '/'" class="echo-card-inner">
             <div class="echo-card-object">
@@ -42,6 +42,10 @@
 <script>
 export default {
   props: {
+    exclude: {
+        type: String,
+        default: '',
+    },
     itemClass: {
         type: String,
         default: '',
