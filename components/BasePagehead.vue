@@ -32,11 +32,6 @@
                     :alt="'「' + title + '」のサムネイル'"
                 >
             </picture>
-            <img
-                v-if="eyecatchLgUrl && !eyecatchSmUrl"
-                :src="eyecatchLgUrl"
-                :alt="'「' + title + '」のサムネイル'"
-            />
         </div><!-- /.echo-hero-image -->
         <div class="echo-hero-contents">
             <div class="echo-hero-contents-inner">
@@ -125,7 +120,7 @@ export default {
     height: 200%;
     top: 50%;
     left: 50%;
-    transform: translateX(-50%) translateY(-50%)  rotate(-10deg);
+    transform: translateX(-50%) translateY(-50%) rotate(-5deg);
     transform-origin: center;
     object-position: top center;
 }
