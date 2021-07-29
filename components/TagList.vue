@@ -1,5 +1,5 @@
 <template>
-<dd :class="itemClass" class="echo-labels-item">
+<dd v-if="id !== exclude" :class="itemClass" class="echo-labels-item">
     <a :href="`/tag/` + id + `/`" :class="labelClass" class="echo-label">
         {{ label }}
     </a>
@@ -9,6 +9,10 @@
 <script>
 export default {
   props: {
+    exclude: {
+        type: String,
+        default: '',
+    },
     itemClass: {
         type: String,
         default: '',
@@ -31,7 +35,7 @@ export default {
 </script>
 
 <style scoped>
-    .echo-label:before {
-        content: '#';
-    }
+.echo-label:before {
+    content: '#';
+}
 </style>
