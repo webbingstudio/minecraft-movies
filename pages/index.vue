@@ -93,7 +93,7 @@ export default {
         })
         const moviesShuffle = $shuffle( moviesData.data.contents )
         const tagsData = await axios.get(
-            `${$config.apiUrl}/tags`, {
+            `${$config.apiUrl}/movies?fields=tag&filters=tag[exists]`, {
                 headers: { 'X-API-KEY': $config.apiKey }
         })
         return {
@@ -102,15 +102,15 @@ export default {
             tags: tagsData.data.contents
         }
     },
-    computed: {
-        usedTags() {
-            return this.$getUsedTags( this.movies, this.tags )
-        },
-    },
     head() {
         return {
             title: 'MinecraftのYouTube動画倉庫 - マインクラフトムービーズ'
         }
+    },
+    computed: {
+        usedTags() {
+            return this.$getUsedTags( this.tags )
+        },
     }
 }
 
