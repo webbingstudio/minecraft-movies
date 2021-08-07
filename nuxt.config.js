@@ -60,6 +60,7 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    '@nuxtjs/sitemap',
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -67,5 +68,30 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+  },
+
+  sitemap: {
+    path: '/sitemap.xml',
+    hostname: 'https://minecraft.webbingstudio.net',
+    routes(callback) {
+      axios.get(`${$config.apiUrl}/movies?limit=15&orders=-publishedAt`,
+        {
+          headers: { 'X-API-KEY': config.apiKey }
+        }
+      )
+      .then((res) => {
+        const routes = res.data.contents.map((movie) => {
+          return '/post/' + movie.id
+        })
+        callback(null, routes)
+      })
+      .catch(callback)
+    }
+    gzip: true,
+    exclude: [
+      '/login/**',
+      '/admin/**'
+    ]
   }
+
 }
