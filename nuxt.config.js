@@ -82,7 +82,10 @@ export default {
       )
       .then((res) => {
         const routes = res.data.contents.map((movie) => {
-          return '/post/' + movie.id
+          return {
+            url: '/post/' + movie.id, 
+            lastmod: movie.createdAt
+          }
         })
         callback(null, routes)
       })
