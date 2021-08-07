@@ -1,4 +1,5 @@
 const { API_KEY, API_URL } = process.env
+import axios from 'axios'
 
 export default {
   publicRuntimeConfig: {
@@ -74,9 +75,9 @@ export default {
     path: '/sitemap.xml',
     hostname: 'https://minecraft.webbingstudio.net',
     routes(callback) {
-      axios.get(`${$config.apiUrl}/movies?limit=15&orders=-publishedAt`,
+      axios.get(`${API_URL}/movies?limit=15&orders=-publishedAt`,
         {
-          headers: { 'X-API-KEY': config.apiKey }
+          headers: { 'X-API-KEY': API_KEY }
         }
       )
       .then((res) => {
@@ -86,7 +87,7 @@ export default {
         callback(null, routes)
       })
       .catch(callback)
-    }
+    },
     gzip: true,
     exclude: [
       '/login/**',
