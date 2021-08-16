@@ -1,9 +1,9 @@
-const { BASE_URL, API_KEY, API_URL } = process.env
+const { API_KEY, API_URL } = process.env
 import axios from 'axios'
 
 export default {
   env: {
-    baseUrl: BASE_URL || 'http://localhost:3000'
+    baseUrl: 'https://minecraft.webbingstudio.net'
   },
   publicRuntimeConfig: {
     apiUrl: API_URL

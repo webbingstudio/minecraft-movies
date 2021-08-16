@@ -75,13 +75,13 @@ export default {
             title: `タグ: ${this.currentTag.label}`,
             meta: [
                 { property: 'og:title', content: `タグ: ${this.currentTag.label} | ${process.env.npm_package_name}` },
-                { property: 'og:url', content: `${process.env.baseUrl}${this.$route.fullPath}` },
-                { property: 'og:image', content: `${process.env.baseUrl}/share/ogimage.jpg` },
+                { property: 'og:url', content: `https://minecraft.webbingstudio.net${this.$route.fullPath}` },
+                { property: 'og:image', content: 'https://minecraft.webbingstudio.net/share/ogimage.jpg' },
                 { property: 'og:type', content: 'article' },
-                { property: 'twitter:image', content: `${process.env.baseUrl}/share/ogimage.jpg` }
+                { property: 'twitter:image', content: 'https://minecraft.webbingstudio.net/share/ogimage.jpg' }
             ],
             link: [
-                { rel: 'canonical', href: `${process.env.baseUrl}${this.$route.fullPath}` }
+                { rel: 'canonical', href: `https://minecraft.webbingstudio.net${this.$route.fullPath}` }
             ]
         }
     },

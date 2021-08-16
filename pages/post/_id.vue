@@ -61,13 +61,13 @@ export default {
             title: this.post.title,
             meta: [
                 { property: 'og:title', content: (this.post.title ? `${this.post.title} | ` : '') + process.env.npm_package_name },
-                { property: 'og:url', content: `${process.env.baseUrl}${this.$route.fullPath}` },
-                { property: 'op:image', content: `${process.env.baseUrl}/share/ogimage.jpg` },
+                { property: 'og:url', content: `https://minecraft.webbingstudio.net${this.$route.fullPath}` },
+                { property: 'op:image', content: 'https://minecraft.webbingstudio.net/share/ogimage.jpg' },
                 { property: 'og:type', content: 'article' },
-                { property: 'twitter:image', content: `${process.env.baseUrl}/share/ogimage.jpg` }
+                { property: 'twitter:image', content: 'https://minecraft.webbingstudio.net/share/ogimage.jpg' }
             ],
             link: [
-                { rel: 'canonical', href: `${process.env.baseUrl}${this.$route.fullPath}` }
+                { rel: 'canonical', href: `https://minecraft.webbingstudio.net${this.$route.fullPath}` }
             ]
         }
     }

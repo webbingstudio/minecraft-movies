@@ -107,13 +107,13 @@ export default {
             title: 'MinecraftのYouTube動画倉庫 - マインクラフトムービーズ',
             meta: [
                 { property: 'og:title', content: 'MinecraftのYouTube動画倉庫 - マインクラフトムービーズ' },
-                { property: 'og:url', content: process.env.baseUrl },
-                { property: 'og:image', content: `${process.env.baseUrl}/share/ogimage.jpg` },
+                { property: 'og:url', content: 'https://minecraft.webbingstudio.net' },
+                { property: 'og:image', content: 'https://minecraft.webbingstudio.net/share/ogimage.jpg' },
                 { property: 'og:type', content: 'website' },
-                { property: 'twitter:image', content: `${process.env.baseUrl}/share/ogimage.jpg` }
+                { property: 'twitter:image', content: 'https://minecraft.webbingstudio.net/share/ogimage.jpg' }
             ],
             link: [
-                { rel: 'canonical', href: process.env.baseUrl }
+                { rel: 'canonical', href: 'https://minecraft.webbingstudio.net' }
             ]
         }
     },
