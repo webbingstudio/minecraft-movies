@@ -25,7 +25,12 @@ export default {
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { 'http-equiv': 'x-ua-compatible', content: 'ie=edge' },
       { name: 'format-detection', content: 'telephone=no' },
-      { name: 'google-site-verification', content: 'j290d128IB5GtyMJlnSv_D7NRq0HSrIUM3LD494WoI4' }
+      { name: 'google-site-verification', content: 'j290d128IB5GtyMJlnSv_D7NRq0HSrIUM3LD494WoI4' },
+      { property: 'og:site_name', content: 'minecraft-movies' },
+      { property: 'og:locale', content: 'ja_JP' },
+      { name: 'twitter:card', content: 'summary_large_image' },
+      { name: 'twitter:site', content: '@webbingstudio' },
+      { name: 'twitter:creator', content: '@webbingstudio' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
