@@ -72,7 +72,15 @@ export default {
     },
     head() {
         return {
-            title: 'タグ: ' + this.currentTag.label
+            title: `タグ: ${this.currentTag.label}`,
+            meta: [
+                { property: 'og:title', content: `タグ: ${this.currentTag.label} | ${process.env.npm_package_name}` },
+                { property: 'og:url', content: `${process.env.baseUrl}${this.$route.fullPath}` },
+                { property: 'og:type', content: 'article' }
+            ],
+            link: [
+                { rel: 'canonical', href: `${process.env.baseUrl}${this.$route.fullPath}` }
+            ]
         }
     },
     computed: {

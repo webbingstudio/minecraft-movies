@@ -1,7 +1,10 @@
-const { API_KEY, API_URL } = process.env
+const { BASE_URL, API_KEY, API_URL } = process.env
 import axios from 'axios'
 
 export default {
+  env: {
+    baseUrl: BASE_URL || 'http://localhost:3000'
+  },
   publicRuntimeConfig: {
     apiUrl: API_URL
   },

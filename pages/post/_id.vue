@@ -58,7 +58,15 @@ export default {
     },
     head() {
         return {
-            title: this.post.title
+            title: this.post.title,
+            meta: [
+                { property: 'og:title', content: (this.post.title ? `${this.post.title} | ` : '') + process.env.npm_package_name },
+                { property: 'og:url', content: `${process.env.baseUrl}${this.$route.fullPath}` },
+                { property: 'og:type', content: 'article' }
+            ],
+            link: [
+                { rel: 'canonical', href: `${process.env.baseUrl}${this.$route.fullPath}` }
+            ]
         }
     }
 }
