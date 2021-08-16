@@ -76,6 +76,7 @@ export default {
             meta: [
                 { property: 'og:title', content: `タグ: ${this.currentTag.label} | ${process.env.npm_package_name}` },
                 { property: 'og:url', content: `${process.env.baseUrl}${this.$route.fullPath}` },
+                { property: 'og:image', content: `${process.env.baseUrl}/share/ogimage.jpg` },
                 { property: 'og:type', content: 'article' }
             ],
             link: [
