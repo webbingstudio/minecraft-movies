@@ -109,7 +109,8 @@ export default {
                 { property: 'og:title', content: 'MinecraftのYouTube動画倉庫 - マインクラフトムービーズ' },
                 { property: 'og:url', content: process.env.baseUrl },
                 { property: 'og:image', content: `${process.env.baseUrl}/share/ogimage.jpg` },
-                { property: 'og:type', content: 'website' }
+                { property: 'og:type', content: 'website' },
+                { property: 'twitter:image', content: `${process.env.baseUrl}/share/ogimage.jpg` }
             ],
             link: [
                 { rel: 'canonical', href: process.env.baseUrl }

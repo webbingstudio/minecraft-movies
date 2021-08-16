@@ -62,7 +62,9 @@ export default {
             meta: [
                 { property: 'og:title', content: (this.post.title ? `${this.post.title} | ` : '') + process.env.npm_package_name },
                 { property: 'og:url', content: `${process.env.baseUrl}${this.$route.fullPath}` },
-                { property: 'og:type', content: 'article' }
+                { property: 'op:image', content: `${process.env.baseUrl}/share/ogimage.jpg` },
+                { property: 'og:type', content: 'article' },
+                { property: 'twitter:image', content: `${process.env.baseUrl}/share/ogimage.jpg` }
             ],
             link: [
                 { rel: 'canonical', href: `${process.env.baseUrl}${this.$route.fullPath}` }
