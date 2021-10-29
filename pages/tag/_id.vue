@@ -46,11 +46,11 @@ export default {
     async asyncData({ $config, params }) {
         const moviesData = await axios.get(
             `${$config.apiUrl}/movies?filters=tag%5Bcontains%5D${params.id}&limit=9&orders=-publishedAt`, {
-                headers: { 'X-API-KEY': $config.apiKey }
+                headers: { 'X-MICROCMS-API-KEY': $config.apiKey }
         })
         const tagsData = await axios.get(
             `${$config.apiUrl}/movies?fields=tag&filters=tag[exists]`, {
-                headers: { 'X-API-KEY': $config.apiKey }
+                headers: { 'X-MICROCMS-API-KEY': $config.apiKey }
         })
         const tagList = tagsData.data.contents.map( item => item.tag ).flat(1)
         return {

@@ -89,12 +89,12 @@ export default {
     async asyncData({ $config, $shuffle }) {
         const moviesData = await axios.get(
             `${$config.apiUrl}/movies?limit=50&orders=-publishedAt`, {
-                headers: { 'X-API-KEY': $config.apiKey }
+                headers: { 'X-MICROCMS-API-KEY': $config.apiKey }
         })
         const moviesShuffle = $shuffle( moviesData.data.contents )
         const tagsData = await axios.get(
             `${$config.apiUrl}/movies?fields=tag&filters=tag[exists]`, {
-                headers: { 'X-API-KEY': $config.apiKey }
+                headers: { 'X-MICROCMS-API-KEY': $config.apiKey }
         })
         return {
             movies: moviesData.data.contents.slice( 0, 24 ),

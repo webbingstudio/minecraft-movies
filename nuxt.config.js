@@ -85,7 +85,7 @@ export default {
     routes(callback) {
       axios.get(`${API_URL}/movies?limit=15&orders=-publishedAt`,
         {
-          headers: { 'X-API-KEY': API_KEY }
+          headers: { 'X-MICROCMS-API-KEY': API_KEY }
         }
       )
       .then((res) => {
